@@ -1,0 +1,102 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all likes
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new like
+    </h2>
+
+    <form action="/insert_like" method="post">
+      <div class="form-group">
+        <label for="fan_id_box">
+          Fan
+        </label>
+
+        <input type="text" id="fan_id_box" name="query_fan_id" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="photo_id_box">
+          Photo
+        </label>
+
+        <input type="text" id="photo_id_box" name="query_photo_id" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create like
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Fan
+        </th>
+
+        <th>
+          Photo
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @likes.each do |like| %>
+      <tr>
+        <td>
+          <%= like.id %>
+        </td>
+
+        <td>
+          <%= like.fan_id %>
+        </td>
+
+        <td>
+          <%= like.photo_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(like.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(like.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/likes/<%= like.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
