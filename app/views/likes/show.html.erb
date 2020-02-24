@@ -1,0 +1,86 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Like #<%= @like.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/likes" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_like/<%= @like.id %>" class="btn btn-block btn-outline-secondary">
+          Delete like
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Fan
+      </dt>
+      <dd>
+        <%= @like.fan_id %>
+      </dd>
+
+      <dt>
+        Photo
+      </dt>
+      <dd>
+        <%= @like.photo_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@like.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@like.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit like
+    </h2>
+
+    <form action="/modify_like/<%= @like.id %>"  method="post" >
+      <div class="form-group">
+        <label for="fan_id_box">
+          Fan
+        </label>
+
+        <input type="text" id="fan_id_box" name="query_fan_id" class="form-control" value="<%= @like.fan_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="photo_id_box">
+          Photo
+        </label>
+
+        <input type="text" id="photo_id_box" name="query_photo_id" class="form-control" value="<%= @like.photo_id %>">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update like
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
